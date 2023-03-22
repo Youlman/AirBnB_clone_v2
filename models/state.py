@@ -7,6 +7,7 @@ from models.city import City
 from os import getenv
 import models
 
+
 class State(BaseModel, Base):
     """Represents a State for a MySQL database.
     __tablename__ (str): The name of the MySQL table to store states.

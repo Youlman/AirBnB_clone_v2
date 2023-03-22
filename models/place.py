@@ -1,7 +1,12 @@
 #!/usr/bin/python3
 """Defines the Place class."""
+import models
+from os import getenv
 from models.base_model import BaseModel, Base
+from models.review import Review
 from sqlalchemy import Column, Float, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
+
 
 class Place(BaseModel, Base):
     """Represents a Place for a MySQL database.
@@ -30,4 +35,15 @@ class Place(BaseModel, Base):
     price_by_night = Column(Integer, default=0)
     latitude = Column(Float)
     longitude = Column(Float)
-  
+    reviews = relationship("Review", backref="place", cascade="delete")
+
+    if getenv("HBNB_TYPE_STORAGE", None) != "db":
+        @property
+        def reviews(self):
+            """Get a list of all linked Reviews."""
+            review_list = []
+            for review in list(models.storage.all(Review).values()):
+                if review.place_id == self.id:
+                    review_list.append(review)
+            return review_list
+   
