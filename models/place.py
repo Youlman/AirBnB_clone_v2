@@ -7,6 +7,7 @@ from models.review import Review
 from models.amenity import Amenity
 from sqlalchemy import Column, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+from sqlalchemy import Table
 
 
 ssociation_table = Table("place_amenity", Base.metadata,
