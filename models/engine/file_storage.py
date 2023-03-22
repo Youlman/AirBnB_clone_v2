@@ -65,4 +65,7 @@ class FileStorage:
     def delete(self, obj=None):
         """ delete obj from __objects if it’s inside -
           if obj is equal to None, the method should not do anything"""
-        self.__objects.pop("{}.{}".format(type(obj).__name__, obj.id), None)
+        try:
+            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
+        except (AttributeError, KeyError):
+            pass
