@@ -7,7 +7,7 @@ from fabric.api import local
 from fabric.api import put
 from fabric.api import run
 
-env.hosts = ["34.207.57.129", "54.157.170.167"]
+env.hosts = ["34.207.57.129", "100.25.104.4"]
 
 
 def do_pack():
