@@ -3,6 +3,8 @@
     Your web application must be listening on 0.0.0.0, port 5000
     Routes:
     /: display “Hello HBNB!”
+    /hbnb: display “HBNB”
+    /c/<text>
 """
 from flask import Flask
 
@@ -13,6 +15,18 @@ app = Flask(__name__)
 def hello_hbnb():
     """Displays 'Hello HBNB!'"""
     return "Hello HBNB!"
+
+
+@app.route("/hbnb", strict_slashes=False)
+def hbnb():
+    """Displays 'HBNB!'"""
+    return "HBNB"
+
+
+@app.route("/c/<text>", strict_slashes=False)
+def show_text(text):
+    text = text.replace('_', ' ')
+    return "C {}".format(text)
 
 
 if __name__ == "__main__":
