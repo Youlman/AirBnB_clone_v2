@@ -9,7 +9,7 @@ import models
 
 
 class State(BaseModel, Base):
-    """Represents a State for a MySQL database.
+    """Represents a State.
     __tablename__ (str): The name of the MySQL table to store states.
     name (sqlalchemy.String): The state's name.
     cities(sqlalchemy.Integer): The state -city relationship
